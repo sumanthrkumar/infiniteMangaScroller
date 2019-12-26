@@ -10,13 +10,13 @@ export class MainScrollerComponent implements OnInit {
   constructor() { }
   @HostListener("window:scroll", [])
   onWindowScroll() {
-    let pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.offsetHeight;
-    let max = document.documentElement.scrollHeight;
+    let pos = (document.documentElement.scrollTop || document.body.scrollTop);
+    let max = document.documentElement.offsetHeight;
 
     console.log("pos = " + pos + " and max = " + max);
     // pos/max will give you the distance between scroll bottom and and bottom of screen in percentage.
-    if(pos == (max * 0.75) )   {
-      alert("Scrolled 3/4 way!");
+    if(pos >= (max * 0.75) )   {
+      this.showMoreImages();
     }
   }
   lastAddedChapter = 962;
